@@ -4,6 +4,7 @@
 @import "lib/bootstrap/variables";
 @import "lib/bootstrap/mixins";
 @import "lib/bootstrap/utilities";
+@import "lib/bootstrap/transitions";
 @import "lib/bootstrap/modal";
 
 /* Main */
@@ -13,7 +14,7 @@
 @import "main/footer";
 
 /* Blocks */
-//@import "blocks/bem-block";
+@import "blocks/bem-block";
 
 /* Index Page */
-//@import "includes/index/index-block";
+@import "includes/index/index-block";

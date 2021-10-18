@@ -4,6 +4,7 @@ const del = require('del');
 const plumber = require('gulp-plumber');
 const rename = require('gulp-rename');
 const cache = require('gulp-cache');
+const cheerio = require('gulp-cheerio');
 
 const woff = require("gulp-ttf2woff");
 const woff2 = require("gulp-ttftowoff2");
@@ -62,6 +63,7 @@ function css() {
     .pipe(dest('build/css'))
 }
 
+
 function cssLib() {
   return src('src/css/lib/*.css')
     .pipe(dest('build/css/lib'))
@@ -92,6 +94,12 @@ function img() {
 function svg() {
   return src('src/img/svg/*.svg')
     .pipe(dest('build/img/svg'))
+    .pipe(cheerio({
+      run: ($) => {
+        $('[fill]').removeAttr('fill');
+      },
+      parserOptions: { xmlMode: true }
+    }))
     .pipe(svgstore({ inlineSvg: true }))
     .pipe(rename('sprite.svg'))
     .pipe(dest('build/img/svg'))
