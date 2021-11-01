@@ -119,7 +119,7 @@ function serve(cb) {
     cors: true
   })
   gulp.watch('src/html/**/*.pug', gulp.series(html, reload))
-  gulp.watch('src/css/**/*.scss', gulp.series(css, reload))
+  gulp.watch('src/css/**/*.scss', gulp.series(css))
   gulp.watch('src/css/lib/**/.css', gulp.series(cssLib, reload))
   gulp.watch('src/js/*.js', gulp.series(js, reload))
   gulp.watch('src/js/lib/**', gulp.series(jsLib, reload))

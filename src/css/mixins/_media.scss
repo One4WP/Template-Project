@@ -18,3 +18,10 @@
     @content;
   }
 }
+
+@mixin max-width-custom($width) {
+
+  @media (max-width: $width) {
+    @content;
+  }
+}
