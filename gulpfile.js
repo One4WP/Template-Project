@@ -92,7 +92,7 @@ function img() {
 }
 
 function svg() {
-  return src('src/img/svg/*.svg')
+  return src('src/img/svg/**/*.svg')
     .pipe(dest('build/img/svg'))
     .pipe(cheerio({
       run: ($) => {
@@ -103,6 +103,11 @@ function svg() {
     .pipe(svgstore({ inlineSvg: true }))
     .pipe(rename('sprite.svg'))
     .pipe(dest('build/img/svg'))
+}
+
+function files() {
+  return src('src/files/**/*')
+    .pipe(dest('build/files'))
 }
 
 function reload(cb) {
@@ -126,6 +131,7 @@ function serve(cb) {
   gulp.watch('src/fonts', gulp.series(fonts, reload))
   gulp.watch('src/img/**/*.{gif,png,jpg,jpeg,ico}', gulp.series(img, reload))
   gulp.watch('src/img/svg/*.svg', gulp.series(svg, reload))
+  gulp.watch('src/files/**/*', gulp.series(files, reload))
   return cb()
 }
 
